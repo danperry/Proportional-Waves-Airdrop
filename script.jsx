@@ -257,8 +257,7 @@ class BaseComponent extends React.Component {
 					if (!window.confirm(`Are you sure you want to submit ${transactions.length} transactions totalling ${totalPayout / +`1E${this.state.payoutTokenInfo.precision}`} ${this.state.payoutTokenInfo.name}`)){
 						return
 					}
-					Promise.all(transactions.map((transaction) => this._submitTransaction(transaction)))
-					.then(()=>this._loadWallets())
+					transactions.forEach((transaction) => this._submitTransaction(transaction));
 				}}>
 				Submit Payout Transactions
 			</button>
